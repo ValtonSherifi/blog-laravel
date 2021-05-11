@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Controllers\UsersController;
 
 class PagesController extends Controller
 {
@@ -21,15 +23,7 @@ class PagesController extends Controller
         return view('pages.about')->with('title', $title);
     }
 
-    public function services(){
-
-        $data = array(
-            'title'=>'Service',
-            'services' => ['Web Design', 'Programming', 'SEO']
-        );
-        
-        return view('pages.services')->with($data);
-    }
+    
 
     public function welcome(){
         $title = 'Welcome to our blog';

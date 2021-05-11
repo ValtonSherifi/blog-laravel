@@ -19,9 +19,9 @@
                 </div>
             </div>   
         @endforeach
-        <div class="d-flex justify-content-center">
+        {{-- <div class="d-flex justify-content-center">
             {!! $posts->links() !!}
-        </div>
+        </div> --}}
     @else 
         <p>No posts found</p>
     @endif
