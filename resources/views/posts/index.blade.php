@@ -1,9 +1,26 @@
 @extends('pages.layouts.app')
 
 @section('content')
+{{-- 
+    <div class="col-md-4">
+        <form action="/search" method="get">
+            <div class="input-group">
+                <input type="seach" name="search" class="form-control">
+                <span class="input-group-prepend">
+                    <button type="submit" class="btn btn-outline-secondary">Search</button>
+                </span>
+            </div>
+        </form>
+    </div> --}}
+
     <h1>Posts</h1>
     
-    @if(count($posts)>0)
+    {{-- <form action="{{ route('search') }}" method="GET">
+    <input type="text" name="search" required/>
+    <button type="submit">Search</button>
+    </form> --}}
+
+    @if(is_countable($posts)>0)
         @foreach ($posts as $post)
             <div class="card">
                 <div class="row">
@@ -25,5 +42,6 @@
     @else 
         <p>No posts found</p>
     @endif
+
 
 @endsection

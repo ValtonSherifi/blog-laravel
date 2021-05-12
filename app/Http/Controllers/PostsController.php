@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\Models\Post;
+use App\Models\User;
 use DB;
+
 
 class PostsController extends Controller
 {
@@ -32,6 +34,18 @@ class PostsController extends Controller
         //$posts = DB::select('SELECT * FROM posts');
         //$posts = Post::orderBy('title','desc')->take(1)->get();
         //$posts = Post::orderBy('title','desc')->get();
+
+        // $posts = Post::query();
+        // if (request('term')) {
+        //     $posts->where('title', 'Like', '%' . request('term') . '%');
+        // }
+
+        // // return $posts->orderBy('id', 'DESC')->paginate(10);
+
+        
+
+        // return $project->orderBy('id', 'DESC')->paginate(10);
+        //}
 
         $posts = Post::orderBy('created_at','desc')->paginate(10);
         return view('posts.index')->with('posts', $posts);
@@ -205,5 +219,13 @@ class PostsController extends Controller
         
         $post->delete();
         return redirect('/posts')->with('success', 'Post Removed');
+    }
+
+    public function search(Request $request){
+
+        $search = $request->get('search');
+        $posts = DB::table('posts')->where('title','like','%'.$search.'%')->get();
+        return view('posts.index',['posts'=>$posts]);
+        
     }
 }

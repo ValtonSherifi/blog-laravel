@@ -27,7 +27,9 @@ Route::get('/profiles', 'App\Http\Controllers\UsersController@index');
 
 Route::get('/welcome', 'App\Http\Controllers\PagesController@welcome');
 
-Route::resource('posts','App\Http\Controllers\PostsController');
+Route::resource('/posts','App\Http\Controllers\PostsController');
+
+// Route::get('/search/','App\Http\Controllers\PostsController@search');
 
 Route::get('/profiles/{id}',[App\Http\Controllers\UsersController::class,'show']);
 
